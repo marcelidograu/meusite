@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculadora JS</title>
+  <style>
+    body {
+      background: #1e1e1e;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+    }
+
+    .calculadora {
+      background: #2c2c2c;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px #000;
+    }
+
+    .display {
+      background: #000;
+      color: #0f0;
+      font-size: 2em;
+      padding: 15px;
+      text-align: right;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      min-width: 240px;
+    }
+
+    .botoes {
+      display: grid;
+      grid-template-columns: repeat(4, 60px);
+      gap: 10px;
+    }
+
+    button {
+      padding: 15px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      background: #444;
+      color: white;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      background: #666;
+    }
+
+    .operador {
+      background: orange;
+      color: black;
+    }
+
+    .igual {
+      background: green;
+    }
+
+    .limpar {
+      background: red;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="calculadora">
+    <div class="display" id="display">0</div>
+
+    <div class="botoes">
+      <button class="limpar" onclick="limpar()">C</button>
+      <button onclick="apagar()">←</button>
+      <button class="operador" onclick="adicionar('/')">÷</button>
+      <button class="operador" onclick="adicionar('*')">×</button>
+
+      <button onclick="adicionar('7')">7</button>
+      <button onclick="adicionar('8')">8</button>
+      <button onclick="adicionar('9')">9</button>
+      <button class="operador" onclick="adicionar('-')">-</button>
+
+      <button onclick="adicionar('4')">4</button>
+      <button onclick="adicionar('5')">5</button>
+      <button onclick="adicionar('6')">6</button>
+      <button class="operador" onclick="adicionar('+')">+</button>
+
+      <button onclick="adicionar('1')">1</button>
+      <button onclick="adicionar('2')">2</button>
+      <button onclick="adicionar('3')">3</button>
+      <button class="igual" onclick="calcular()">=</button>
+
+      <button onclick="adicionar('0')" style="grid-column: span 2;">0</button>
+      <button onclick="adicionar('.')">.</button>
+    </div>
+  </div>
+
+  <script>
+    let display = document.getElementById("display");
+
+    function adicionar(valor) {
+      if (display.innerText === "0") {
+        display.innerText = valor;
+      } else {
+        display.innerText += valor;
+      }
+    }
+
+    function limpar() {
+      display.innerText = "0";
+    }
+
+    function apagar() {
+      display.innerText = display.innerText.slice(0, -1);
+      if (display.innerText === "") {
+        display.innerText = "0";
+      }
+    }
+
+    function calcular() {
+      try {
+        display.innerText = eval(display.innerText);
+      } catch {
+        display.innerText = "Erro";
+      }
+    }
+  </script>
+
+</body>
+</html>
