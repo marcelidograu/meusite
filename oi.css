@@ -1,0 +1,26 @@
+*{  margin: 0;
+    padding: 0;}  
+
+
+
+body {
+    box-sizing: border-box;
+    height: 50vh;
+    background-color: blue;
+    color: #FF0000;
+}
+
+
+strong{
+    color : white;
+}
+
+span{
+    color :yellow;
+    border: 6px solid #FF4500;
+    padding :15;
+} 
+.apresentacao{
+    display:flex;
+    width: 100%;
+}
